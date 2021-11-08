@@ -100,6 +100,8 @@
 #' reducedDim(esophagus)
 NULL
 
+#' @rdname calculateUnifrac
+#' @export
 setGeneric("calculateUnifrac", signature = c("x", "tree"),
            function(x, tree, ... )
              standardGeneric("calculateUnifrac"))
@@ -109,16 +111,14 @@ setGeneric("calculateUnifrac", signature = c("x", "tree"),
 setMethod("calculateUnifrac", signature = c(x = "ANY", tree = "phylo"),
     function(x, tree, weighted = FALSE, normalized = TRUE,
              BPPARAM = SerialParam()){
-        .calculate_distance(x, FUN = runUniFrac, tree = tree,
+        .calculate_distance(x, FUN = runUnifrac, tree = tree,
                             weighted = weighted, normalized = normalized,
                             BPPARAM = BPPARAM)
     }
 )
 
 #' @rdname calculateUnifrac
-#'
 #' @importFrom SummarizedExperiment assay
-#'
 #' @export
 setMethod("calculateUnifrac",
           signature = c(x = "TreeSummarizedExperiment",
@@ -141,6 +141,24 @@ setMethod("calculateUnifrac",
     }
 )
 
+#' @rdname calculateUnifrac
+#' @export
+setGeneric("calculateUniFrac", signature = c("x"),
+           function(x, ... )
+             standardGeneric("calculateUniFrac"))
+
+#' @rdname calculateUnifrac
+#' @export
+setMethod("calculateUniFrac",
+          signature = c(x = "ANY"),
+    function(x, ...){
+        .Deprecated( msg = paste0("The name of the function 'calculateUniFrac' is",
+                                  " changed to 'calculateUnifrac'. \nPlease use the new",
+                                  " name instead.\n",
+                                  "See help('Deprecated')") )
+        calculateUnifrac(x, ...)
+    }
+)
 
 ################################################################################
 # Fast Unifrac for R.
