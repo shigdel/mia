@@ -80,7 +80,15 @@ assay to use for calculation.
 (Please use \code{abund_values} instead. At some point \code{exprs_values}
 will be disabled.)}
 
+<<<<<<< HEAD:man/calculateUnifrac.Rd
 \item{transposed}{Logical scalar, is x transposed with cells in rows?}
+=======
+\item{transposed}{Logical scalar, is x transposed with cells in rows, i.e.,
+is Unifrac distance calculated based on rows (FALSE) or columns (TRUE).
+(By default: \code{transposed = FALSE})}
+
+\item{...}{optional arguments not used.}
+>>>>>>> origin/master:man/calculateUniFrac.Rd
 }
 \value{
 a sample-by-sample distance matrix, suitable for NMDS, etc.
